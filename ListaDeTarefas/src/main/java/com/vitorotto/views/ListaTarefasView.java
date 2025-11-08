@@ -54,13 +54,15 @@ public class ListaTarefasView {
     public void mostrarTarefa(TarefaDTO tarefa) {
         if (tarefa == null) {
             mostrarMensagem("Tarefa não encontrada com esse ID");
+        } else {
+            System.out.println("\n---------- SUA TAREFA ----------");
+            System.out.println(" ID: " + tarefa.getId());
+            System.out.println(" Título: " + tarefa.getTitulo());
+            System.out.println(" Descrição: " + tarefa.getDescricao());
+            System.out.println(" Status: " + tarefa.getStatus());
+            System.out.println("----------------------------------");
         }
-        System.out.println("\n---------- SUA TAREFA ----------");
-        System.out.println(" ID: " + tarefa.getId());
-        System.out.println(" Título: " + tarefa.getTitulo());
-        System.out.println(" Descrição: " + tarefa.getDescricao());
-        System.out.println(" Status: " + tarefa.getStatus());
-        System.out.println("----------------------------------");
+        
     }
 
     public void mostrarMensagem(String mensagem) {
