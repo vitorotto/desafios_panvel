@@ -2,15 +2,10 @@ package com.vitorotto.models;
 
 import java.util.ArrayList;
 
-enum StatusTarefa {
-    PENDENTE, CONCLUIDA
-}
-
 public class ListaTarefasModel {
     private NoModel<TarefaModel> inicio;
     private int tamanho;
     private NoModel<TarefaModel> ultimo;
-    private final String statusTarefa = "PENDENTE"; 
 
     private int proximoId = 1;
 
@@ -21,6 +16,7 @@ public class ListaTarefasModel {
     }
 
     public void adicionar(String titulo, String descricao) {
+        String statusTarefa = "PENDENTE";
         TarefaModel novaTarefa = new TarefaModel(proximoId++, titulo, descricao, statusTarefa);
         NoModel<TarefaModel> novoNo = new NoModel<>(novaTarefa);
         if (this.tamanho == 0) {

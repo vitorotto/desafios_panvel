@@ -1,14 +1,13 @@
 package com.vitorotto.controllers;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 
 import com.vitorotto.dtos.TarefaDTO;
 import com.vitorotto.models.ListaTarefasModel;
 import com.vitorotto.models.TarefaModel;
 import com.vitorotto.views.ListaTarefasView;
 
-public class ListaTarefasController implements EventListener {
+public class ListaTarefasController {
 
     private final ListaTarefasModel model;
     private final ListaTarefasView view;
