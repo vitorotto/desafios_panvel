@@ -102,10 +102,10 @@ public class ListaTarefasController {
             view.mostrarMensagem("Nenhuma tarefa cadastrada");
             return;
         }
-        int id = view.lerIdTarefa("marcar como concluída");
+        int id = view.lerIdTarefa("marcar como finalizada");
         boolean sucesso = model.marcarConcluida(id);
         if (sucesso) {
-            view.mostrarMensagem("Tarefa #" + id + " marcada como concluída.");
+            view.mostrarMensagem("Tarefa #" + id + " marcada como finalizada.");
         } else {
             view.mostrarMensagem("Erro: Tarefa #" + id + " não encontrada.");
         }

@@ -68,7 +68,7 @@ public class ListaTarefasModel {
     public boolean marcarConcluida(int id) {
         NoModel<TarefaModel> noEncontrado = buscarNo(id);
         if (noEncontrado != null) {
-            noEncontrado.getElemento().setStatus("CONCLUÍDA");
+            noEncontrado.getElemento().setStatus("FINALIZADA");
             return true;
         }
         return false;

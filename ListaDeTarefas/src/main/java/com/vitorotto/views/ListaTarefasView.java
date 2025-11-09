@@ -21,11 +21,11 @@ public class ListaTarefasView {
         System.out.println("\n========= MENU DE TAREFAS =========");
         System.out.println("1. Adicionar Tarefa");
         System.out.println("2. Listar Tarefas");
-        System.out.println("3. Marcar Tarefa como Concluída");
+        System.out.println("3. Marcar Tarefa como Finalizada");
         System.out.println("4. Remover Tarefa");
         System.out.println("5. Ver Total de Tarefas");
-        System.out.println("6. Limpar tudo");
-        System.out.println("7. Buscar tarefa");
+        System.out.println("6. Limpar Tudo");
+        System.out.println("7. Buscar Tarefa");
         System.out.println("0. Sair");
         System.out.println("===================================");
         System.out.print("Escolha uma opção: ");
