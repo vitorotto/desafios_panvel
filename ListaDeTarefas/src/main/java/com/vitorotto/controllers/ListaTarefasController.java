@@ -1,13 +1,14 @@
 package com.vitorotto.controllers;
 
 import java.util.ArrayList;
+import java.util.EventListener;
 
 import com.vitorotto.dtos.TarefaDTO;
 import com.vitorotto.models.ListaTarefasModel;
 import com.vitorotto.models.TarefaModel;
 import com.vitorotto.views.ListaTarefasView;
 
-public class ListaTarefasController {
+public class ListaTarefasController implements EventListener {
 
     private final ListaTarefasModel model;
     private final ListaTarefasView view;
@@ -15,7 +16,6 @@ public class ListaTarefasController {
     public ListaTarefasController(ListaTarefasModel model, ListaTarefasView view) {
         this.model = model;
         this.view = view;
-        this.view.setController(this);
     }
 
     // Inicilização do loop principal do código
@@ -38,7 +38,7 @@ public class ListaTarefasController {
             case 3 -> marcarTarefaConcluida();
             case 4 -> removerTarefa();
             case 5 -> mostrarTotal();
-            case 6 -> mostrarTotal();
+            case 6 -> limparTudo();
             case 7 -> buscarTarefa();
             case 0 -> {
                 view.mostrarMensagem("Até logo!");
@@ -59,6 +59,10 @@ public class ListaTarefasController {
     }
 
     private void listarTarefas() {
+        if (model.total() == 0) {
+            view.mostrarMensagem("Nenhuma tarefa cadastrada");
+            return;
+        }
         ArrayList<TarefaModel> tarefasDoModel = model.listar();
         ArrayList<TarefaDTO> tarefasDTO = new ArrayList<>();
 
@@ -77,14 +81,28 @@ public class ListaTarefasController {
         int id = view.lerIdTarefa("buscar");
         TarefaModel tarefa = model.buscarTarefa(id);
         if (tarefa == null) {
-            view.mostrarMensagem("Erro: Tarefa não encontrada com esse id");
+            view.mostrarMensagem("Erro: Tarefa #" + id + " não encontrada.");
         } else {
+            view.mostrarMensagem("Tarefa #" + id + " encontrada.");
             TarefaDTO dto = new TarefaDTO(tarefa.getDescricao(), tarefa.getId(), tarefa.getStatus(), tarefa.getTitulo());
             view.mostrarTarefa(dto);
         }
     }
 
+    private void limparTudo() {
+        if (model.total() == 0) {
+            view.mostrarMensagem("Nenhuma tarefa cadastrada");
+        } else {
+            model.limpar();
+            view.mostrarMensagem("Histórico limpo");
+        }
+    }
+
     private void marcarTarefaConcluida() {
+        if (model.total() == 0) {
+            view.mostrarMensagem("Nenhuma tarefa cadastrada");
+            return;
+        }
         int id = view.lerIdTarefa("marcar como concluída");
         boolean sucesso = model.marcarConcluida(id);
         if (sucesso) {
@@ -95,6 +113,10 @@ public class ListaTarefasController {
     }
 
     private void removerTarefa() {
+        if (model.total() == 0) {
+            view.mostrarMensagem("Nenhuma tarefa cadastrada");
+            return;
+        }
         int id = view.lerIdTarefa("remover");
         boolean sucesso = model.remover(id);
         if (sucesso) {

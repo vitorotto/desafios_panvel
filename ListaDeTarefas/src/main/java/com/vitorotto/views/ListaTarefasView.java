@@ -9,14 +9,12 @@ import com.vitorotto.dtos.TarefaDTO;
 
 public class ListaTarefasView {
     private final Scanner scanner;
-    private ListaTarefasController controller;
 
     public ListaTarefasView() {
         this.scanner = new Scanner(System.in);
     }
 
     public void setController(ListaTarefasController controller) {
-        this.controller = controller;
     }
 
     public void mostrarMenu() {
@@ -34,11 +32,6 @@ public class ListaTarefasView {
     }
 
     public void mostrarLista(ArrayList<TarefaDTO> tarefas) {
-        if (tarefas.isEmpty()) {
-            mostrarMensagem("Nenhuma tarefa na lista.");
-            return;
-        }
-
         System.out.println("\n---------- LISTA DE TAREFAS ----------");
         
         for (TarefaDTO tarefa : tarefas) { 

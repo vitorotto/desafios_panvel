@@ -10,6 +10,7 @@ public class Main {
         ListaTarefasModel model = new ListaTarefasModel();
         ListaTarefasView view = new ListaTarefasView();
         ListaTarefasController controller = new ListaTarefasController(model, view);
+        view.setController(controller);
         controller.iniciar();
     }
 }
